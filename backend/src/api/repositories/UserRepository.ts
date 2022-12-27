@@ -25,6 +25,16 @@ export class UserRepository {
     return user;
   }
 
+  async readByEmail(email: string) {
+    const user = await db.user.findUnique({
+      where: {
+        email: email
+      },
+    });
+
+    return user;
+  }
+
   async update(id: string, user: IUser) {
     await db.user.update({
       where: {
