@@ -4,6 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
+    "dev": "docker compose -f docker-compose.yml up -d && nodemon",
     "lint": "eslint"
   },
   "dependencies": {
