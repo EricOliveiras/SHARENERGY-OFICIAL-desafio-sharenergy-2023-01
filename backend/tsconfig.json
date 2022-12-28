@@ -12,7 +12,7 @@
     "tsBuildInfoFile": ".tsbuildinfo",
     "sourceMap": true,
     "typeRoots": [
-      "@types",
+      "src/types",
       "./node_modules/@types",
     ],
     "types": ["node", "express", "session"]
