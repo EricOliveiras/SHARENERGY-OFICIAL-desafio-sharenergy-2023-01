@@ -1,5 +1,5 @@
 import { prismaService as db } from '../../utils/prisma';
-import { IUser } from '../../utils/interfaces/IUser';
+import { IUser, IUserUpdate } from '../../utils/interfaces/IUser';
 
 export class UserRepository {
   async create(user: IUser) {
@@ -35,7 +35,7 @@ export class UserRepository {
     return user;
   }
 
-  async update(id: string, user: IUser) {
+  async update(id: string, user: IUserUpdate) {
     await db.user.update({
       where: {
         id: id
