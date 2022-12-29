@@ -57,11 +57,11 @@ export class UserController {
   }
 
   static async login(req: Request, res: Response) {
-    const { email, password } = req.body;
+    const { username, password } = req.body;
 
     const userService = new UserAuthenticate(repository);
 
-    const logged = await userService.execute(email, password);
+    const logged = await userService.execute(username, password);
 
     req.session.singin = true;
 
