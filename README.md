@@ -90,3 +90,51 @@ Esperamos de você duas entregas: o código no GitHub e um vídeo explicativo no
 ### Prazo limite de entrega
 
 O pull request com sua solução do desafio deve ser feito até a data especificada no corpo do email que você recebeu com a descrição do desafio.
+
+## Utlizando o back-end
+
+### Dependências globais
+
+Você precisa ter três dependencias instaladas:
+
+- Node.js LTS v16 (ou superior, utilizaremos o nvm para gerenciar os pacotes node)
+- Yarn (caso não tenha instalado, poderá utilizar: `npm install --global yarn`)
+- Docker Engine v17.12.0 com Docker Compose v1.24.1 (ou qualquer versão superior)
+
+Recomendação:
+ - Nos arquivos projeto, na pasta /insomnia, existe o arquivo collection_user com os métodos HTTP e rotas usadas para as requisições. 
+    
+## Rodando localmente
+
+Clone o projeto
+
+```bash
+  git clone https://github.com/EricOliveiras/SHARENERGY-OFICIAL-desafio-sharenergy-2023-01.git
+```
+
+Entre no diretório do projeto
+
+```bash
+  cd backend
+```
+
+Instale as dependências
+
+```bash
+  yarn
+```
+
+Inicie o servidor
+
+```bash
+  yarn dev
+```
+> Note que o docker precisa está rodando na sua máquina.
+
+
+## Stack utilizada
+
+- [Typescript](https://www.typescriptlang.org/)
+- [NodeJS](https://nodejs.org/)
+- [Prisma](https://www.prisma.io/)
+- [Docker](https://www.docker.com/)
