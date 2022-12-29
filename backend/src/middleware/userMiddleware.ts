@@ -6,6 +6,7 @@ export const createUserValidator = [
   body('username', 'required field').notEmpty(),
   body('username', 'must be a string').isString(),
   body('username', 'length invalid, minimum length is 4').isLength({ min: 4 }),
+  body('username', 'username must be in lower case').isLowercase(),
   body('email', 'missing field').exists(),
   body('email', 'required field').notEmpty(),
   body('email', 'must be a string').isString(),
@@ -20,6 +21,7 @@ export const UpdateUserValidator = [
   body('username', 'required field').notEmpty().optional(),
   body('username', 'must be a string').isString().optional(),
   body('username', 'length invalid, minimum length is 4').isLength({ min: 4 }).optional(),
+  body('username', 'username must be in lower case').isLowercase(),
   body('email', 'required field').notEmpty().optional(),
   body('email', 'must be a string').isString().optional(),
   body('email', 'invalid format').isEmail().optional().isLowercase(),
@@ -29,9 +31,11 @@ export const UpdateUserValidator = [
 ];
 
 export const authValidator = [
-  body('email', 'required field').notEmpty(),
-  body('email', 'must be a string').isString(),
-  body('email', 'invalid format').isEmail().isLowercase(),
+  body('username', 'missing field').exists(),
+  body('username', 'required field').notEmpty(),
+  body('username', 'must be a string').isString(),
+  body('username', 'length invalid, minimum length is 4').isLength({ min: 4 }),
+  body('username', 'username must be in lower case').isLowercase(),
   body('password', 'required field').notEmpty(),
   body('password', 'must be a string').isString(),
 ];
