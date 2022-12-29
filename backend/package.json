@@ -4,8 +4,11 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "dev": "docker compose -f docker-compose.yml up -d && nodemon",
+    "dev": "docker compose -f docker-compose.yml up -d && npx prisma generate && npx prisma db push && npx prisma db seed && nodemon",
     "lint": "eslint"
+  },
+  "prisma": {
+    "seed": "ts-node ./prisma/seed/index.ts"
   },
   "dependencies": {
     "@prisma/client": "^4.8.0",
