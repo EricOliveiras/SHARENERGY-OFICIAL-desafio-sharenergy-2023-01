@@ -35,6 +35,16 @@ export class UserRepository {
     return user;
   }
 
+  async readByUsername(username: string) {
+    const user = await db.user.findUnique({
+      where: {
+        username: username
+      },
+    });
+
+    return user;
+  }
+
   async update(id: string, user: IUserUpdate) {
     await db.user.update({
       where: {
