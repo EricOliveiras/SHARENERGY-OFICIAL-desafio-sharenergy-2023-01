@@ -9,8 +9,8 @@ export class UserAuthenticate {
     this.repository = repository;
   }
 
-  async execute(email: string, password: string): Promise<object> {
-    const user = await this.repository.readByEmail(email);
+  async execute(username: string, password: string): Promise<object> {
+    const user = await this.repository.readByUsername(username);
 
     if (!user || !compareSync(password, user.password)) {
       throw new HttpException(401, 'Email or password incorrect');
