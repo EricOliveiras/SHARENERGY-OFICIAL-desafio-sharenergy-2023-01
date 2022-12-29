@@ -12,8 +12,9 @@ export class CreateUser {
 
   async execute({ username, email, password }: IUser): Promise<void> {
     const checkExistingUser = await this.repository.readByEmail(email);
+    const checkExistingUsername = await this.repository.readByUsername(username);
 
-    if (checkExistingUser) {
+    if (checkExistingUser || checkExistingUsername) {
       throw new HttpException(409, 'User already exist');
     }
 
