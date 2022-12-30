@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import { UserController } from '../api/controllers/UserController';
-import { UpdateUserValidator, authValidator, createUserValidator, userMiddleware } from '../middleware/userMiddleware';
+import { UpdateUserValidator, authValidator, createUserValidator, validatorMiddleware } from '../middleware/validatorMiddleware';
 import { authenticateMiddleware } from '../middleware/authenticateMiddleware';
 
 export const userRouter = Router();
@@ -8,28 +8,28 @@ export const userRouter = Router();
 userRouter.
   post('/',
     createUserValidator,
-    userMiddleware,
+    validatorMiddleware,
     UserController.create
   );
 
 userRouter.
   post('/login',
     authValidator,
-    userMiddleware,
+    validatorMiddleware,
     UserController.login
   );
 
 userRouter.
   post('/logout',
     authenticateMiddleware,
-    userMiddleware,
+    validatorMiddleware,
     UserController.logout
   );
 
 userRouter.
   post('/read',
     authenticateMiddleware,
-    userMiddleware,
+    validatorMiddleware,
     UserController.read
   );
 
@@ -37,13 +37,13 @@ userRouter.
   put('/update',
     authenticateMiddleware,
     UpdateUserValidator,
-    userMiddleware,
+    validatorMiddleware,
     UserController.update
   );
 
 userRouter.
   delete('/delete',
     authenticateMiddleware,
-    userMiddleware,
+    validatorMiddleware,
     UserController.delete
   );
