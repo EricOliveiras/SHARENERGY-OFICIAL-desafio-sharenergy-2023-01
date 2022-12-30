@@ -1,8 +1,8 @@
 import { Request, Response } from 'express';
 import { IUser, IUserUpdate } from '../../utils/interfaces/IUser';
 import { UserRepository } from '../repositories/UserRepository';
-import { CreateUser, DeleteUser, ReadUser, UpdateUser } from '../services';
-import { UserAuthenticate } from '../services/UserAuthenticate';
+import { CreateUser, DeleteUser, ReadUser, UpdateUser } from '../services/user';
+import { UserAuthenticate } from '../services/user/UserAuthenticate';
 
 const repository = new UserRepository();
 
