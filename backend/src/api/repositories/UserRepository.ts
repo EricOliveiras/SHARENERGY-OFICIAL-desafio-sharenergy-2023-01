@@ -18,8 +18,9 @@ export class UserRepository {
         username: true,
         email: true,
         created_at: true,
-        updated_at: true
-      }
+        updated_at: true,
+        client: true
+      },
     });
 
     return user;
