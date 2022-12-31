@@ -1,7 +1,8 @@
+import Header from "./components/Header"
 
 const App = () => {
   return (
-    <h1>Olá mundo</h1>
+    <Header />
   )
 }
 
