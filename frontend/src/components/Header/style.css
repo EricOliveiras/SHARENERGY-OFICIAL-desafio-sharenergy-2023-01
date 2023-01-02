@@ -1,5 +1,9 @@
 .header {
+  position: absolute;
+  top: 0;
+  width: 100%;
   display: flex;
+  position: absolute;
   justify-content: space-between;
   align-items: center;
   padding: 10px 150px;
