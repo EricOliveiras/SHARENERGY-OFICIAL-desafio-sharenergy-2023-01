@@ -3,9 +3,15 @@
   src: url('/fonts/RobotoMono-Regular.ttf');
 }
 
+html,
+body {
+  min-height: 100%;
+}
+
 * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
   font-family: 'RobotoMono', monospace;
+  background-color: #070C15;
 }
