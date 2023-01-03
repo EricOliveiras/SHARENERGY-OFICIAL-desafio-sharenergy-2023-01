@@ -1,0 +1,46 @@
+.header,
+.header-nav,
+.header-list,
+.header-item-list,
+.header-title {
+  display: flex;
+}
+
+.header {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 150px;
+  background-color: #070C15;
+  border-bottom: solid 1px aquamarine;
+}
+
+.header-title {
+  text-transform: uppercase;
+  font-size: 1.8em;
+}
+
+.header-list {
+  padding: 0px 30px;
+}
+
+.header-item-list,
+.header-title {
+  padding: 0 10px;
+  list-style: none;
+}
+
+.nav-link,
+.header-item-list,
+.header-title {
+  text-decoration: none;
+}
+
+p,
+.nav-link,
+.header-item-list,
+.header-title {
+  color: aquamarine;
+}
