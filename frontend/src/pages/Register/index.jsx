@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form'
 import { ToastContainer } from 'react-toastify'
 import { yupResolver } from '@hookform/resolvers/yup'
 
-import { contextUser } from '../../contexts/UserContexts'
+import { contextUser } from '../../contexts/userContexts'
 import { creeateUser } from '../../validators/userValidators'
 import Header from '../../components/Header' 
 import Footer from '../../components/Footer' 
@@ -21,7 +21,7 @@ const Register = () => {
   }
 
   return (
-    <div className='container'>
+    <>
       <Header />
       <div className='register-container'>
         <h2 className="register-title">Cadastre-se</h2>
@@ -43,7 +43,7 @@ const Register = () => {
       </div>
       <ToastContainer />
       <Footer />
-    </div>
+    </>
   )
 }
 
