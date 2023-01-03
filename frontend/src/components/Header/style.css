@@ -1,9 +1,15 @@
+.header,
+.header-nav,
+.header-list,
+.header-item-list,
+.header-title {
+  display: flex;
+}
+
 .header {
   position: absolute;
   top: 0;
   width: 100%;
-  display: flex;
-  position: absolute;
   justify-content: space-between;
   align-items: center;
   padding: 10px 150px;
@@ -16,31 +22,25 @@
   font-size: 1.8em;
 }
 
-.header-title a {
-  color: aquamarine;
-  text-decoration: none;
-}
-
-.header-nav {
-  display: flex;
-}
-
 .header-list {
-  display: flex;
   padding: 0px 30px;
 }
 
-.header-item-list {
-  display: flex;
+.header-item-list,
+.header-title {
   padding: 0 10px;
   list-style: none;
 }
 
-.nav-link {
-  color: aquamarine;
+.nav-link,
+.header-item-list,
+.header-title {
   text-decoration: none;
 }
 
-p {
+p,
+.nav-link,
+.header-item-list,
+.header-title {
   color: aquamarine;
 }
