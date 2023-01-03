@@ -1,18 +1,20 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
+
 import './style.css'
 
 const Header = () => {
   return (
     <>
       <div className='header'>
-        <h3 className='header-title'>
-          <a href="/">Sharenergy</a>
+        <h3>
+          <Link className='header-title' to="/">Sharenergy</Link>
         </h3>
         <nav className='header-nav'>
           <ul className='header-list'>
-            <li className='header-item-list'><a className='nav-link' href="/">Login</a></li>
+            <Link className='header-item-list' to='/'>Login</Link>
             <p>|</p>
-            <li className='header-item-list'><a className='nav-link' href="/register">Cadastro</a></li>
+            <Link className='header-item-list' to='/register'>Cadastro</Link>
           </ul>
         </nav>
       </div>
