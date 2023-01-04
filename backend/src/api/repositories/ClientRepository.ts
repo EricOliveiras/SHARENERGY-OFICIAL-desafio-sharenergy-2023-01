@@ -3,9 +3,11 @@ import { IClient, IClientUpdate } from '../../utils/interfaces/IClient';
 
 export class ClientRepository {
   async create(client: IClient) {
-    await db.client.create({
+    const createClient = await db.client.create({
       data: client
     });
+
+    return createClient;
   }
 
   async read(id: string, user_id: string) {
@@ -13,7 +15,9 @@ export class ClientRepository {
       where: {
         AND: [
           {
-            user_id: user_id
+            user_id: {
+              has: user_id
+            }
           },
           {
             id: {
@@ -27,12 +31,34 @@ export class ClientRepository {
     return client;
   }
 
+  async readCpf(cpf: string) {
+    const client = await db.client.findUnique({
+      where: {
+        cpf: cpf
+      },
+    });
+
+    return client;
+  }
+
+  async readEmail(email: string) {
+    const client = await db.client.findUnique({
+      where: {
+        email: email
+      },
+    });
+
+    return client;
+  }
+
   async readByEmail(user_id: string, email: string) {
     const client = await db.client.findFirst({
       where: {
         AND: [
           {
-            user_id: user_id
+            user_id: {
+              has: user_id
+            }
           },
           {
             email: {
@@ -51,7 +77,9 @@ export class ClientRepository {
       where: {
         AND: [
           {
-            user_id: user_id
+            user_id: {
+              has: user_id
+            }
           },
           {
             cpf: {
@@ -68,7 +96,9 @@ export class ClientRepository {
   async readByUserId(user_id: string) {
     const client = await db.client.findMany({
       where: {
-        user_id: user_id
+        user_id: {
+          has: user_id
+        }
       },
       select: {
         id: true,
@@ -77,6 +107,7 @@ export class ClientRepository {
         cpf: true,
         phone: true,
         address: true,
+        user_id: true,
         created_at: true,
         updated_at: true
       }
@@ -95,7 +126,9 @@ export class ClientRepository {
             }
           },
           {
-            user_id: user_id
+            user_id: {
+              has: user_id
+            }
           }
         ]
       },
@@ -112,6 +145,32 @@ export class ClientRepository {
     });
 
     return client;
+  }
+
+  async addUserId(id: string, user_id: string | string[]) {
+    await db.client.update({
+      where: {
+        id: id
+      },
+      data: {
+        user_id: {
+          push: user_id
+        }
+      }
+    });
+  }
+
+  async removeUserId(id: string, user_id: string | string[]) {
+    await db.client.update({
+      where: {
+        id: id
+      },
+      data: {
+        user_id: {
+          set: user_id || []
+        }
+      }
+    });
   }
 
   async update(id: string, client: IClientUpdate) {
