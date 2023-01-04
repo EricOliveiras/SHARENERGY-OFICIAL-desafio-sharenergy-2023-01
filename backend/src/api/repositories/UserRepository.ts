@@ -17,9 +17,9 @@ export class UserRepository {
         id: true,
         username: true,
         email: true,
+        client_id: true,
         created_at: true,
         updated_at: true,
-        client: true
       },
     });
 
@@ -44,6 +44,32 @@ export class UserRepository {
     });
 
     return user;
+  }
+
+  async addClientId(id: string, client_id: string | string[]) {
+    await db.user.update({
+      where: {
+        id: id
+      },
+      data: {
+        client_id: {
+          push: client_id
+        }
+      }
+    });
+  }
+
+  async removeClientId(id: string, client_id: string | string[]) {
+    await db.user.update({
+      where: {
+        id: id
+      },
+      data: {
+        client_id: {
+          set: client_id || []
+        }
+      }
+    });
   }
 
   async update(id: string, user: IUserUpdate) {
