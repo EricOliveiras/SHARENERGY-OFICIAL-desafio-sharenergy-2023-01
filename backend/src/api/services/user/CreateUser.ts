@@ -23,7 +23,8 @@ export class CreateUser {
     await this.repository.create({
       username,
       email,
-      password: hashPassword
+      password: hashPassword,
+      client_id: []
     });
   }
 }
