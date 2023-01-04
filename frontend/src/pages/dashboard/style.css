@@ -1,0 +1,19 @@
+.container-dashboard {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin-top: 10%;
+  height: 70vh;
+  background: #070C15;
+  color: aquamarine;
+  flex-wrap: wrap;
+}
+
+.container-user {
+  width: 400px;
+  height: 140px;
+  border: 1px solid aquamarine;
+  padding: 15px 30px;
+  margin: 5px;
+  display: flex;
+}
