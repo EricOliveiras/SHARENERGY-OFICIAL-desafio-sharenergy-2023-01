@@ -38,6 +38,10 @@ const Register = () => {
           <input className='input' type="password" name="password" {...register('password')}/>
           <p className='errors'>{errors.password?.message}</p>
 
+          <label className='label' htmlFor="passwordConfirmation">Confirme a senha</label>
+          <input className='input' type="password" name="passwordConfirmation" {...register('passwordConfirmation')}/>
+          <p className='errors'>{errors.passwordConfirmation?.message}</p>
+
           <button className='register-button' type="submit">Enviar</button> 
         </form>
       </div>
