@@ -15,7 +15,8 @@ export class UserController {
     await createUser.execute({
       username,
       email,
-      password
+      password,
+      client_id: []
     });
 
     return res.sendStatus(201);
