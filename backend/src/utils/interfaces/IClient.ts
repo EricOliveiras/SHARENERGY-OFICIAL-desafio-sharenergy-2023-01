@@ -13,4 +13,5 @@ export interface IClientUpdate {
   cpf?: string;
   phone?: string;
   address?: string;
+  user_id?: string | string[];
 }
