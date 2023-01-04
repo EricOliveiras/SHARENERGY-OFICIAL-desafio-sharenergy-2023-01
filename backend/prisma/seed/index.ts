@@ -14,7 +14,8 @@ async function main() {
     create: {
       email: 'desafiosharenergy@email.com',
       username: 'desafiosharenergy',
-      password: hashPassword
+      password: hashPassword,
+      client_id: []
     },
   });
 }
