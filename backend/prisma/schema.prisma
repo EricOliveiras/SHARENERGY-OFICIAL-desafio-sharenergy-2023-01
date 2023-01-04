@@ -12,9 +12,9 @@ model User {
   username   String   @unique
   email      String   @unique
   password   String
+  client_id  String[] @db.ObjectId
   created_at DateTime @default(now())
   updated_at DateTime @updatedAt
-  client     Client[]
 
   @@map("user")
 }
@@ -22,12 +22,11 @@ model User {
 model Client {
   id         String   @id @default(auto()) @map("_id") @db.ObjectId
   name       String
-  email      String
-  cpf        String
+  email      String   @unique
+  cpf        String   @unique
   phone      String?
   address    String?
-  user       User     @relation(fields: [user_id], references: [id], onDelete: Cascade, onUpdate: Cascade)
-  user_id    String   @db.ObjectId
+  user_id    String[] @db.ObjectId
   created_at DateTime @default(now())
   updated_at DateTime @updatedAt
 
