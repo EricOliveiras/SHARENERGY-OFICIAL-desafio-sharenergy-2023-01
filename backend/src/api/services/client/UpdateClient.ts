@@ -16,6 +16,15 @@ export class UpdateClient {
       throw new HttpException(404, 'User not found or does not exist');
     }
 
+    if (cpf !== checkExistingUser.cpf || email !== checkExistingUser.email) {
+      const checkclientCpf = await this.repository.readCpf(cpf as string);
+      const checkclientEmail = await this.repository.readEmail(email as string);
+
+      if (checkclientCpf || checkclientEmail) {
+        throw new HttpException(409, 'Email or cpf already exist');
+      }
+    }
+
     await this.repository.update(id, {
       name,
       email,
