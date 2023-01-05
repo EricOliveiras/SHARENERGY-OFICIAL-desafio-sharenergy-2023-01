@@ -2,11 +2,12 @@ import React from 'react'
 import { useForm } from 'react-hook-form'
 import { ToastContainer } from 'react-toastify'
 import { yupResolver } from '@hookform/resolvers/yup'
+import { Link } from 'react-router-dom'
 
 import { contextUser } from '../../contexts/userContexts'
 import { creeateUser } from '../../validators/userValidators'
-import Header from '../../components/Header' 
-import Footer from '../../components/Footer' 
+
+import Header from '../../components/Header'
 
 import './style.css'    
 
@@ -42,11 +43,12 @@ const Register = () => {
           <input className='input' type="password" name="passwordConfirmation" {...register('passwordConfirmation')}/>
           <p className='errors'>{errors.passwordConfirmation?.message}</p>
 
-          <button className='register-button' type="submit">Enviar</button> 
+          <p>Já tem conta? <Link className='login-link' to={'/'}>Entrar</Link></p>
+
+          <button className='register-button' type="submit">Cadastrar</button> 
         </form>
       </div>
       <ToastContainer />
-      <Footer />
     </>
   )
 }
