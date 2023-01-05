@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
+
 import HeaderDashboard from '../../components/HeaderDashboard'
+import HttpCatImage from '../../components/HttpCatImage'
 
 import './style.css'
-import HttpCatImage from '../../components/HttpCatImage'
 
 const HttpCat = () => {
   const [inputValue, setInputValue] = useState('404')
