@@ -6,17 +6,10 @@ import './style.css'
 const Header = () => {
   return (
     <>
-      <div className='header'>
-        <h3>
-          <Link className='header-title' to="/">Sharenergy</Link>
+      <div className='header-primary'>
+        <h3 className='header-title-primary'>
+          <Link className='header-title-primary' to="/">Sharenergy</Link>
         </h3>
-        <nav className='header-nav'>
-          <ul className='header-list'>
-            <Link className='header-item-list' to='/'>Login</Link>
-            <p>|</p>
-            <Link className='header-item-list' to='/register'>Cadastro</Link>
-          </ul>
-        </nav>
       </div>
     </>
   )
