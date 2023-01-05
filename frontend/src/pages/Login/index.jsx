@@ -1,35 +1,52 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { ToastContainer } from 'react-toastify'
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+import Cookies from 'js-cookie'
 
 import { contextUser } from '../../contexts/userContexts'
 import { loginUser } from '../../validators/userValidators'
-import Header from '../../components/Header' 
-import Footer from '../../components/Footer' 
+
+import Header from '../../components/Header'
 
 import './style.css'    
 
 const Login = () => {
+  const [isChecked, setIsChecked] = useState(true)
   const navigate = useNavigate()
 
   const { register, handleSubmit, formState:{ errors } } = useForm({
     resolver: yupResolver(loginUser)
   })
 
-  
+  const handleChange = (e) => {
+    setIsChecked(e.target.checked)
+    if (e.target.checked) return true
+  }
+
+  const handleSave = (username, password) => {
+    if (isChecked) {
+      Cookies.set('username', username)
+      Cookies.set('password', password)
+    } else {
+      Cookies.remove('username')
+      Cookies.remove('password')
+    }
+  }
+
   const onSubmit = async ({ username, password }) => {
     const response = await contextUser.login(username, password)
     const token = response.data.id
 
     try {
       if (response.status === 200 && token) {
+        Cookies.set('token', token, { expires: 1 })
+        handleSave(username, password)
         navigate('/dashboard')
-        localStorage.setItem('token', token)
       }
     } catch (error) {
-      return
+      console.log(error)
     }
   }
 
@@ -48,13 +65,13 @@ const Login = () => {
           <p className='errors'>{errors.password?.message}</p>
           
           <div className='container-check'>
-            <input className='check' type="checkbox" name="remember"/>
+            <input className='check' type="checkbox" name="remember" checked={isChecked} onChange={handleChange}/>
             <label className='remember' htmlFor="remember">Lembrar-me</label>
           </div>
+          <p>Não tem conta? <Link className='register-link' to={'/register'}>Registre-se</Link> </p>
           <button className='login-button' type="submit">Entrar</button>
         </form>
       </div>
-      <Footer />
       <ToastContainer />
     </>
   )
