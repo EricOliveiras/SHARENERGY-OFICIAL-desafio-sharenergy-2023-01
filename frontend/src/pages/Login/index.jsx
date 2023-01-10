@@ -17,21 +17,12 @@ const Login = () => {
   const savedUsername = localStorage.getItem('username')
   const savedPassword = localStorage.getItem('password')
   const savedChecked = localStorage.getItem('checked')
-
-  const [checked, setChecked] = useState(false)
+  const checkToBoolean = savedChecked === 'true' ? true : false
+  
+  const [checked, setChecked] = useState(checkToBoolean)
   const [value, setValue] = useState({
-    username: '',
-    password: '',
-  })
-
-  useEffect(() => {
-    if(savedChecked === true) {
-      setValue({
-        username: savedUsername,
-        password: savedPassword
-      })
-      setChecked(true)
-    }
+    username: savedUsername,
+    password: savedPassword,
   })
 
   const { register, handleSubmit, formState:{ errors } } = useForm({
