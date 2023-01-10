@@ -6,7 +6,7 @@ import './style.css'
 const HeaderDashboard = () => {
 
   const logout = () => {
-    localStorage.clear()
+    localStorage.removeItem('token')
   }
 
   return (
