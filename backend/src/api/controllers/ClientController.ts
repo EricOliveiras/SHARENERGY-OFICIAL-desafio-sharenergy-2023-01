@@ -2,6 +2,7 @@ import { Request, Response } from 'express';
 import { IClient } from '../../utils/interfaces/IClient';
 import { ClientRepository } from '../repositories/ClientRepository';
 import { CreateClient, ReadClient, ReadAllClients, UpdateClient, DeleteClient } from '../services/client';
+import { ReadClientByParams } from '../services/client/ReadClientByParams';
 
 const repository = new ClientRepository();
 
@@ -45,9 +46,21 @@ export class ClientController {
     return res.status(200).json(clients);
   }
 
+  static async readByParam(req: Request, res: Response) {
+    const user_id = req.user?.id as string;
+    const { param } = req.body;
+
+    const readClients = new ReadClientByParams(repository);
+
+    const clients = await readClients.execute(user_id, param);
+
+    return res.status(200).json(clients);
+  }
+
   static async update(req: Request, res: Response) {
     const user_id = req.user?.id as string;
-    const { id, name, email, cpf, address, phone } = req.body;
+    const { id } = req.params;
+    const { name, email, cpf, address, phone } = req.body;
 
     const updateClient = new UpdateClient(repository);
 
