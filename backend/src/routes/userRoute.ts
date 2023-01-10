@@ -20,13 +20,6 @@ userRouter.
   );
 
 userRouter.
-  post('/logout',
-    authenticateMiddleware,
-    validatorMiddleware,
-    UserController.logout
-  );
-
-userRouter.
   post('/read',
     authenticateMiddleware,
     validatorMiddleware,
