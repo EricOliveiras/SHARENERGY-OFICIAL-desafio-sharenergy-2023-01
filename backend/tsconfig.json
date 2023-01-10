@@ -15,7 +15,7 @@
       "src/types",
       "./node_modules/@types",
     ],
-    "types": ["node", "express", "session"]
+    "types": ["node", "express"]
   },
   "include": ["src/**/*"],
   "exclude": ["node_modules", "build/**/*"],
