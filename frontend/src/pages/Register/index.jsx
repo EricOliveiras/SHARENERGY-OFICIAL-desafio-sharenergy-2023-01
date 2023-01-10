@@ -23,11 +23,14 @@ const Register = () => {
       email.toLowerCase(), 
       password.toLowerCase()
     )
-    if (result) reset()
-          
-    setTimeout(() => {
-      navigate('/')
-    }, 3000)
+
+    if (result.status === 201)  {
+      reset()
+      setTimeout(() => {
+        navigate('/')
+      }, 3000)
+    }
+    
   }
 
   return (
