@@ -3,9 +3,11 @@ import { IUser, IUserUpdate } from '../../utils/interfaces/IUser';
 
 export class UserRepository {
   async create(user: IUser) {
-    await db.user.create({
+    const createUser =  await db.user.create({
       data: user
     });
+
+    return createUser;
   }
 
   async read(id: string) {
