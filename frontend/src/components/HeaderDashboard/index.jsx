@@ -1,12 +1,13 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import Cookies from 'js-cookie'
 
 import './style.css'
 
 const HeaderDashboard = () => {
 
-  const logout = () => Cookies.remove('token')
+  const logout = () => {
+    localStorage.clear()
+  }
 
   return (
     <>
@@ -22,7 +23,7 @@ const HeaderDashboard = () => {
             <p className='hd-paragraph'>|</p>
             <Link className='header-item-list' to='/random-dog'>RANDOM DOG</Link>
             <p className='hd-paragraph'>|</p>
-            <Link className='header-item-list' to='/register-client'>REGISTRAR CLIENTE</Link>
+            <Link className='header-item-list' to='/client'>REGISTRAR CLIENTE</Link>
             <p className='hd-paragraph'>|</p>
             <Link className='header-item-list' to='/' onClick={logout}>SAIR</Link>
           </ul>
