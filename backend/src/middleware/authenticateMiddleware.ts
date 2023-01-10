@@ -1,26 +1,30 @@
 import { Response, NextFunction, Request } from 'express';
 import { HttpException } from '../utils/error/ErrorHandle';
+import { verify } from 'jsonwebtoken';
+import { secret } from '../config';
 
 export const authenticateMiddleware = (
   req: Request,
   res: Response,
   next: NextFunction,
 ) => {
-  const authHeader = req.headers.authorization;
+  const authorization = req.headers.authorization;
 
-  if (!authHeader) {
+  if (!authorization) {
     throw new HttpException(400, 'Missing auth header');
   }
 
-  const id = authHeader.split(' ')[1];
+  const token = authorization.split(' ')[1];
 
-  if (req.session.singin) {
+  try {
+    const payload = <{ user_id: string }>verify(token, secret);
+    
     req.user = {
-      id: id
+      id: payload.user_id,
     };
 
     return next();
-  } else {
-    throw new HttpException(401, 'unauthorized');
+  } catch {
+    throw new HttpException(401, 'Unauthorized');
   }
 };
