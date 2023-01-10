@@ -10,7 +10,7 @@ export class CreateUser {
     this.repository = repository;
   }
 
-  async execute({ username, email, password }: IUser): Promise<void> {
+  async execute({ username, email, password }: IUser): Promise<IUser> {
     const checkExistingUser = await this.repository.readByEmail(email);
     const checkExistingUsername = await this.repository.readByUsername(username);
 
@@ -20,11 +20,13 @@ export class CreateUser {
 
     const hashPassword = await hash(password, 10);
 
-    await this.repository.create({
+    const user = await this.repository.create({
       username,
       email,
       password: hashPassword,
       client_id: []
     });
+
+    return user;
   }
 }
