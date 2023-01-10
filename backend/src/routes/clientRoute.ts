@@ -1,7 +1,7 @@
 import { Router } from 'express';
 import { ClientController } from '../api/controllers/ClientController';
 import { authenticateMiddleware } from '../middleware/authenticateMiddleware';
-import { createClientValidator, updateOrDeleteClientValidator, validatorMiddleware } from '../middleware/validatorMiddleware';
+import { createClientValidator, deleteClientValidator, updateClientValidator, validatorMiddleware } from '../middleware/validatorMiddleware';
 
 export const clientRouter = Router();
 
@@ -20,15 +20,21 @@ clientRouter
   );
 
 clientRouter
-  .post('/read-all',
+  .get('/read-all',
     authenticateMiddleware,
     ClientController.readAll
   );
 
 clientRouter
-  .put('/update',
+  .post('/read-by-param',
     authenticateMiddleware,
-    updateOrDeleteClientValidator,
+    ClientController.readByParam
+  );
+
+clientRouter
+  .put('/update/:id',
+    authenticateMiddleware,
+    updateClientValidator,
     validatorMiddleware,
     ClientController.update
   );
@@ -36,7 +42,7 @@ clientRouter
 clientRouter
   .delete('/delete',
     authenticateMiddleware,
-    updateOrDeleteClientValidator,
+    deleteClientValidator,
     validatorMiddleware,
     ClientController.delete
   );
