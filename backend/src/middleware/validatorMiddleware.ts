@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from 'express';
-import { body, validationResult } from 'express-validator';
+import { body, param, validationResult } from 'express-validator';
 
 export const createUserValidator = [
   body('username', 'missing field').exists(),
@@ -22,7 +22,6 @@ export const createClientValidator = [
   body('name', 'required field').notEmpty(),
   body('name', 'must be a string').isString(),
   body('name', 'length invalid, minimum length is 4').isLength({ min: 4 }),
-  body('name', 'name must be in lower case').isLowercase(),
   body('email', 'missing field').exists(),
   body('email', 'required field').notEmpty(),
   body('email', 'must be a string').isString(),
@@ -32,10 +31,10 @@ export const createClientValidator = [
   body('cpf', 'must be a string').isString(),
   body('cpf', 'length invalid, minimum length is 11').isLength({ min: 11, max: 11 }),
   body('phone', 'missing field').exists().optional(),
-  body('phone', 'required field').notEmpty(),
+  body('phone', 'required field').optional(),
   body('phone', 'must be a string').isString(),
   body('address', 'missing field').exists().optional(),
-  body('address', 'required field').notEmpty(),
+  body('address', 'required field').optional(),
   body('address', 'must be a string').isString(),
 ];
 
@@ -52,10 +51,10 @@ export const UpdateUserValidator = [
   body('password', 'length invalid, minimum length is 6').isLength({ min: 6 }).optional(),
 ];
 
-export const updateOrDeleteClientValidator = [
-  body('id', 'missing field').exists(),
-  body('id', 'required field').notEmpty(),
-  body('id', 'must be a string').isString(),
+export const updateClientValidator = [
+  param('id', 'missing field').exists(),
+  param('id', 'required field').notEmpty(),
+  param('id', 'must be a string').isString(),
   body('name', 'missing field').exists().optional(),
   body('name', 'required field').notEmpty().optional(),
   body('name', 'must be a string').isString().optional(),
@@ -75,6 +74,12 @@ export const updateOrDeleteClientValidator = [
   body('address', 'missing field').exists().optional().optional(),
   body('address', 'required field').notEmpty().optional(),
   body('address', 'must be a string').isString().optional(),
+];
+
+export const deleteClientValidator = [
+  body('id', 'missing field').exists(),
+  body('id', 'required field').notEmpty(),
+  body('id', 'must be a string').isString()
 ];
 
 export const authValidator = [
