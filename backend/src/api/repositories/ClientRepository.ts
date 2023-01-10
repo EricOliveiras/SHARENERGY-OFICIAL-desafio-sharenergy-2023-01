@@ -31,6 +31,59 @@ export class ClientRepository {
     return client;
   }
 
+  async readByParams(user_id: string, param: string) {
+    const client = await db.client.findMany({
+      where: {
+        OR: [
+          {
+            AND: [
+              {
+                name: {
+                  startsWith: param
+                }
+              },
+              {
+                user_id: {
+                  has: user_id
+                }
+              }
+            ]
+          },
+          {
+            AND: [
+              {
+                cpf: {
+                  startsWith: param
+                }
+              },
+              {
+                user_id: {
+                  has: user_id
+                }
+              }
+            ]
+          },
+          {
+            AND: [
+              {
+                email: {
+                  startsWith: param
+                }
+              },
+              {
+                user_id: {
+                  has: user_id
+                }
+              }
+            ]
+          }
+        ],
+      }
+    });
+
+    return client;
+  }
+
   async readCpf(cpf: string) {
     const client = await db.client.findUnique({
       where: {
@@ -148,7 +201,7 @@ export class ClientRepository {
   }
 
   async addUserId(id: string, user_id: string | string[]) {
-    await db.client.update({
+    const add = await db.client.update({
       where: {
         id: id
       },
@@ -158,6 +211,8 @@ export class ClientRepository {
         }
       }
     });
+
+    return add;
   }
 
   async removeUserId(id: string, user_id: string | string[]) {
