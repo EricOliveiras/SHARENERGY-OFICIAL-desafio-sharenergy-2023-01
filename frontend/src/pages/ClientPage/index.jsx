@@ -36,11 +36,12 @@ const ClientPage = () => {
   const getClients = async () => {
     const response = await clientContext.readAll(token)
     setclients(response)
-    setLoading(false)
   }
   
   useEffect(() => {
+    setLoading(true)
     getClients()
+    setLoading(false)
   }, [])
   
   return (
