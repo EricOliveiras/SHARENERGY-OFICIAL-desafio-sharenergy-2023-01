@@ -33,8 +33,8 @@ const Dashboard = () => {
           post.users.map((user) => {
             const { username, name, email, image, age } = user;
             return (
-              <div className='container-user'>
-                <div key={username}>
+              <div className='container-user' key={username}>
+                <div>
                   <div>
                     <img src={image} alt={name} />
                   </div>
