@@ -1,0 +1,41 @@
+.container-client {
+  width: 100vw;
+  margin-top: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.nav-client {
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  width: 90vw;
+  color: aquamarine;
+}
+
+.title-client {
+  font-size: 1.8rem;
+}
+.title-client,
+.add-client {
+  text-transform: uppercase;
+}
+
+.add-client {
+  display: flex;
+  background-color: aquamarine;
+  padding: 10px 30px;
+  font-size: 1rem;
+  text-decoration: unset;
+  color: black;
+}
+
+.container-client-card-box {
+  display: flex;
+  width: 90vw;
+  min-height: 10vw;
+  flex-wrap: wrap;
+}
