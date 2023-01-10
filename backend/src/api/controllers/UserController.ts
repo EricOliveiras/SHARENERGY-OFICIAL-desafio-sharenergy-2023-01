@@ -64,14 +64,6 @@ export class UserController {
 
     const logged = await userService.execute(username, password);
 
-    req.session.singin = true;
-
     return res.status(200).json(logged);
-  }
-
-  static async logout(req: Request, res: Response) {
-    req.session.singin = false;
-
-    return res.sendStatus(200);
   }
 }
