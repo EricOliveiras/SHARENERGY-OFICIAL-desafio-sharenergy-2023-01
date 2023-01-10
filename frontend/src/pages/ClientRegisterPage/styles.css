@@ -1,0 +1,84 @@
+.register-client-container,
+.form {
+  display: flex;
+  flex-direction: column;
+}
+
+.register-client-title,
+.label,
+.login-link {
+  text-transform: uppercase;
+}
+
+.register-client-container {
+  background: #070C15;
+  justify-content: center;
+  align-items: center;
+  color: aquamarine;
+  margin-top: 200px;
+  margin-bottom: 50px;
+}
+
+.form {
+  border: 1px solid aquamarine;
+  border-radius: 5px;
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+  min-width: 400px;
+  max-height: 450px;
+  padding: 20px;
+}
+
+.input {
+  border: unset;
+  background-color: #070C15;
+  font-size: 0.9em;
+  border-bottom: 1px solid aquamarine;
+  margin-bottom: 10px;
+  padding: 5px 5px;
+}
+
+.label {
+  font-size: 1.1em;
+}
+
+.register-client-title {
+  padding-bottom: 10px;
+}
+
+.login-link:visited {
+  color: aquamarine;
+}
+
+.input:focus {
+  outline: 0;
+}
+
+.register-client-button {
+  width: 120px;
+  padding: 15px;
+  background-color: aquamarine;
+  border: unset;
+  border-radius: 5px;
+  margin-top: 10px;
+  align-self: flex-end;
+}
+
+.register-client-p {
+  color: aquamarine;
+  text-decoration: unset;
+}
+
+.register-client-button:hover {
+  cursor: pointer;
+  background-color: rgba(104, 184, 157, 0.767);
+}
+
+.register-client-p:hover {
+  cursor: pointer;
+}
+
+.errors {
+  padding-bottom: 10px;
+  font-size: 0.9rem;
+  color: rgb(245, 67, 67);
+}
