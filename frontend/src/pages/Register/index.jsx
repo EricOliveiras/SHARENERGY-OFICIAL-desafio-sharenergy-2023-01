@@ -2,23 +2,32 @@ import React from 'react'
 import { useForm } from 'react-hook-form'
 import { ToastContainer } from 'react-toastify'
 import { yupResolver } from '@hookform/resolvers/yup'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 import { contextUser } from '../../contexts/userContexts'
 import { creeateUser } from '../../validators/userValidators'
-
 import Header from '../../components/Header'
+
 
 import './style.css'    
 
 const Register = () => {
-  const { register, handleSubmit, reset, formState:{ errors } } = useForm({
+  const navigate = useNavigate()
+  const { register, handleSubmit, reset, formState: { errors } } = useForm({
     resolver: yupResolver(creeateUser)
   })
 
   const onSubmit = async ({ username, email, password }) => {
-    const result = await contextUser.create(username, email, password)
+    const result = await contextUser.create(
+      username.toLowerCase(), 
+      email.toLowerCase(), 
+      password.toLowerCase()
+    )
     if (result) reset()
+          
+    setTimeout(() => {
+      navigate('/')
+    }, 3000)
   }
 
   return (
