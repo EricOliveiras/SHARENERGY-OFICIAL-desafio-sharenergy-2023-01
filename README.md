@@ -132,6 +132,9 @@ Inicie o servidor
 ```
 > Note que o docker precisa está rodando na sua máquina.
 
+### URL de acesso ao database localmente
+Você pode utilizar o mongo compass para acessar o banco de dados
+- 'mongodb://admin:admin@localhost:27017/sharenergy-db?authSource=admin&directConnection=true'
 
 ## Stack utilizada
 
