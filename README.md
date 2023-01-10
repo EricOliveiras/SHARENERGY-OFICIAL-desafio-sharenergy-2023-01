@@ -95,14 +95,15 @@ O pull request com sua solução do desafio deve ser feito até a data especific
 
 ### Dependências globais
 
-Você precisa ter três dependencias instaladas:
+Você precisa destas dependencias instaladas:
 
 - Node.js LTS v16 (ou superior, utilizaremos o nvm para gerenciar os pacotes node)
 - Yarn (caso não tenha instalado, poderá utilizar: `npm install --global yarn`)
 - Docker Engine v17.12.0 com Docker Compose v1.24.1 (ou qualquer versão superior)
+- Mongo Server v5.0 ou superior
 
 Recomendação:
- - Nos arquivos projeto, na pasta /insomnia, existe o arquivo collection_user com os métodos HTTP e rotas usadas para as requisições. 
+ - Nos arquivos projeto, na pasta /insomnia, existe o arquivo shareennergy com os métodos HTTP e rotas usadas para as requisições no insomnia. 
     
 ## Rodando localmente
 
@@ -138,3 +139,48 @@ Inicie o servidor
 - [NodeJS](https://nodejs.org/)
 - [Prisma](https://www.prisma.io/)
 - [Docker](https://www.docker.com/)
+
+## Utlizando o front-end
+
+### Dependências globais
+
+Você precisa destas dependencias instaladas:
+
+- Node.js LTS v16 (ou superior, utilizaremos o nvm para gerenciar os pacotes node)
+- Yarn (caso não tenha instalado, poderá utilizar: `npm install --global yarn`)
+
+## Rodando localmente
+
+Clone o projeto
+
+```bash
+  git clone https://github.com/EricOliveiras/SHARENERGY-OFICIAL-desafio-sharenergy-2023-01.git
+```
+
+Entre no diretório do projeto
+
+```bash
+  cd frontend
+```
+
+Instale as dependências
+
+```bash
+  yarn
+```
+
+Inicie o servidor
+
+```bash
+  yarn dev
+```
+
+
+## Stack utilizada
+
+- [Javascript](https://www.javascript.com/)
+- [ReactJS](https://reactjs.org/)
+
+## Video de apresentação do projeto
+
+- [Youtube](https://youtu.be/qJHMg_on91o)
