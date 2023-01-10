@@ -1,6 +1,8 @@
 import { compareSync } from 'bcrypt';
 import { UserRepository } from '../../repositories/UserRepository';
 import { HttpException } from '../../../utils/error/ErrorHandle';
+import { secret } from '../../../config';
+import { sign } from 'jsonwebtoken';
 
 export class UserAuthenticate {
   private repository;
@@ -16,8 +18,19 @@ export class UserAuthenticate {
       throw new HttpException(401, 'Email or password incorrect');
     }
 
-    const id = user.id;
+    const token = sign(
+      { user_id: user.id },
+      secret,
+      { expiresIn: '1h' },
+    );
 
-    return { id: id };
+    return {
+      token,
+      user: {
+        name: user.username,
+        email: user.email,
+      },
+    };
+
   }
 }
