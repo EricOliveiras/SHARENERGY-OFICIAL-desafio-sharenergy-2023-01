@@ -20,11 +20,7 @@ export class CreateClient {
       throw new HttpException(409, 'Client already exist');
     }
 
-    if (client) {
-      await this.repository.addUserId(clientId, user_id);
-      await userRepository.addClientId(user_id, clientId);
-      return;
-    } else {
+    if (!client) {
       const createClient = await this.repository.create({
         user_id,
         name,
@@ -36,7 +32,17 @@ export class CreateClient {
 
       await userRepository.addClientId(user_id, createClient.id);
 
+      return;
     }
 
+    if (!clientExist && client?.email !== email) {
+      throw new HttpException(404, 'Something went wrong');
+    }
+
+    if(!clientExist && !(client?.email !== email)) {
+      await this.repository.addUserId(clientId, user_id);
+      // await this.repository.update(clientId, { phone, address });
+      await userRepository.addClientId(user_id, clientId);
+    }
   }
 }
